@@ -3,12 +3,15 @@
 // variables
 $primaryColor: #2bac73;
 $primaryColorDark: color.scale($primaryColor, $lightness: -15%);
+$primaryColorLight: color.scale($primaryColor, $lightness: 40%);
 
 $secondaryColor: #ff914d;
 $secondaryColorDark: color.scale($secondaryColor, $lightness: -15%);
+$secondaryColorLight: color.scale($secondaryColor, $lightness: 40%);
 
 :root {
   --border: #ececf2;
+  --border-light: #f5f5f5;
   --sidebar-width: clamp(
     280px,
     22vw,
@@ -18,12 +21,22 @@ $secondaryColorDark: color.scale($secondaryColor, $lightness: -15%);
   --page-bg: #ffffff;
   --text-main: #23262f;
   --text-soft: #6b7280;
+  --text-lighter: #9ca3af;
   --pink: #ff6f91;
   --green: #2bac73;
+  --green-light: #e8f5f0;
   --orange: #ff914d;
+  --orange-light: #fff5f0;
   --active-bg: #fff2e8;
   --hover-bg: #f7f7fa;
+  --hover-bg-light: #f9fafb;
   --overlay: rgba(15, 23, 42, 0.55);
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.1);
+  --shadow-lg: 0 10px 20px rgba(0, 0, 0, 0.12);
+  --transition-fast: 0.15s ease;
+  --transition-base: 0.2s ease;
+  --transition-slow: 0.3s ease;
 }
 
 @import "../../node_modules/bulma/bulma";
@@ -35,6 +48,7 @@ $secondaryColorDark: color.scale($secondaryColor, $lightness: -15%);
 @import "./layouts/pageTableContentsLayout";
 @import "./components/imageModal";
 @import "./components/map";
+@import "./components/footer";
 
 /* Map and text spacing on overview page */
 .map-wrap {
@@ -99,6 +113,18 @@ textarea,
 select {
   width: 100%;
   box-sizing: border-box;
+  transition: var(--transition-base);
+  border: 1px solid var(--border);
+
+  &:hover {
+    border-color: $primaryColor;
+  }
+
+  &:focus {
+    border-color: $primaryColor;
+    outline: none;
+    box-shadow: 0 0 0 3px var(--green-light);
+  }
 }
 
 .button {
@@ -115,6 +141,10 @@ select {
   overflow-x: auto;
   -webkit-overflow-scrolling: touch;
   margin-bottom: 1.5rem;
+  border-radius: 0.5rem;
+  border: 1px solid var(--border);
+  background: #fff;
+  box-shadow: var(--shadow-sm);
 }
 
 table {
@@ -122,10 +152,31 @@ table {
   margin-bottom: 0;
 }
 
+table th {
+  background: var(--hover-bg-light);
+  font-weight: 700;
+  border-bottom: 2px solid var(--border);
+  transition: var(--transition-fast);
+}
+
 table th,
 table td {
   word-break: break-word;
   overflow-wrap: break-word;
+  padding: 0.75rem;
+}
+
+table tbody tr {
+  transition: var(--transition-fast);
+  border-bottom: 1px solid var(--border-light);
+
+  &:hover {
+    background: var(--hover-bg-light);
+  }
+
+  &:last-child {
+    border-bottom: none;
+  }
 }
 
 /* Responsive columns */
@@ -146,6 +197,8 @@ table td {
   max-width: 600px;
   max-height: 90vh;
   overflow-y: auto;
+  border-radius: 0.5rem;
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
 }
 
 /* Responsive menu */
@@ -279,6 +332,17 @@ table td {
     cursor: pointer;
     font-size: 1.5rem;
     color: var(--text-main);
+    transition: var(--transition-fast);
+
+    &:hover,
+    &:focus {
+      color: $primaryColor;
+      transform: scale(1.1);
+    }
+
+    &:active {
+      transform: scale(0.95);
+    }
   }
 
   .app-sidebar {
@@ -315,6 +379,7 @@ table td {
     height: 100%;
     background: rgba(0, 0, 0, 0.5);
     z-index: 30;
+    transition: opacity 0.28s ease;
   }
 
   .app-sidebar-overlay.is-active {

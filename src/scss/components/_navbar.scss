@@ -1,16 +1,56 @@
 // top navbar
-.navbar-brand a {
-  p {
-    color: $primaryColor;
-    font-size: 1rem;
-  }
-  span {
-    color: $secondaryColor;
+.navbar {
+  background: #fff;
+  box-shadow: var(--shadow-sm);
+  border-bottom: 1px solid var(--border);
+}
+
+.navbar-brand {
+  a {
+    transition: all var(--transition-base);
+
+    &:hover,
+    &:focus {
+      background: transparent;
+    }
+
+    p {
+      color: $primaryColor;
+      font-size: 1rem;
+      font-weight: 700;
+      transition: color var(--transition-base);
+
+      &:hover {
+        color: color.scale($primaryColor, $lightness: -10%);
+      }
+    }
+
+    span {
+      color: $secondaryColor;
+      transition: color var(--transition-base);
+
+      &:hover {
+        color: color.scale($secondaryColor, $lightness: -10%);
+      }
+    }
   }
 }
 
 .navbar-end a {
   color: $secondaryColor;
+  transition: all var(--transition-base);
+  padding: 0.5rem 1rem;
+  border-radius: 0.375rem;
+
+  &:hover,
+  &:focus {
+    color: color.scale($secondaryColor, $lightness: -10%);
+    background: var(--orange-light);
+  }
+
+  &:active {
+    transform: scale(0.98);
+  }
 }
 
 .app-sticky {
@@ -21,18 +61,28 @@
 }
 
 .app-shadow {
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+  box-shadow: var(--shadow-md);
 }
 
 .navbar-brand .image img {
   max-width: 64px;
   height: auto;
+  transition: transform var(--transition-base);
+
+  &:hover {
+    transform: scale(1.05);
+  }
 }
 
 .navbar-item {
   display: flex;
   align-items: center;
   gap: 8px; /* зураг, текстийн хооронд зай */
+  transition: all var(--transition-base);
+
+  &:hover {
+    background: var(--hover-bg-light);
+  }
 }
 
 // Цэсийг баруун тал руу зэрэгцүүлэх. Navbar.js-д .app-top-navbar классыг ашигласан.
@@ -48,4 +98,28 @@
   background-color: transparent;
   color: inherit;
   box-shadow: none;
+}
+
+// Responsive navbar
+@media screen and (max-width: 768px) {
+  .navbar {
+    padding: 0.5rem 0;
+  }
+
+  .navbar-brand {
+    padding-left: 0.5rem;
+
+    a p {
+      font-size: 0.9rem;
+    }
+  }
+
+  .navbar-end a {
+    padding: 0.4rem 0.8rem;
+    font-size: 0.85rem;
+  }
+
+  .navbar-item {
+    gap: 6px;
+  }
 }

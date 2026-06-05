@@ -4,6 +4,7 @@
   border-bottom: 1px solid var(--border);
   background: var(--sidebar-bg);
   padding: 1rem 1.25rem;
+  box-shadow: var(--shadow-sm);
 }
 
 .app-sidebar-icon-btn {
@@ -15,6 +16,21 @@
   font-size: 1rem;
   color: #64748b;
   cursor: pointer;
+  transition: all var(--transition-base);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  &:hover,
+  &:focus {
+    background: $primaryColor;
+    color: white;
+    transform: scale(1.08);
+  }
+
+  &:active {
+    transform: scale(0.95);
+  }
 }
 
 .app-sidebar-overlay {
@@ -23,7 +39,9 @@
   background: var(--overlay);
   opacity: 0;
   visibility: hidden;
-  transition: 0.25s ease;
+  transition:
+    opacity 0.25s ease,
+    visibility 0.25s ease;
   z-index: 39;
 }
 
@@ -48,6 +66,31 @@
   position: sticky;
   top: 4rem;
   overflow: auto;
+  transition: box-shadow var(--transition-base);
+  box-shadow: none;
+
+  &:hover {
+    box-shadow: inset -2px 0 0 var(--border);
+  }
+
+  // Custom scrollbar
+  &::-webkit-scrollbar {
+    width: 6px;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: var(--border);
+    border-radius: 3px;
+    transition: background var(--transition-base);
+
+    &:hover {
+      background: $primaryColor;
+    }
+  }
 }
 
 .app-main-content {
@@ -55,6 +98,25 @@
   min-width: 0;
   // padding: 1rem 1.25rem;
   overflow-y: auto;
+
+  // Custom scrollbar
+  &::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: var(--border);
+    border-radius: 4px;
+    transition: background var(--transition-base);
+
+    &:hover {
+      background: $primaryColor;
+    }
+  }
 }
 
 .app-sidebar-mobile-head {

@@ -88,6 +88,19 @@ export const translations = {
       failedToLoadNutritionData:
         "Хүнсний найрлагын өгөгдөл ачаалахад алдаа гарлаа.",
     },
+    footer: {
+      aboutTitle: "Сайтын тухай",
+      aboutText:
+        "Монголын хүнсний найрлагын мэдээллийн сан - уламжлалт болон орчин үеийн хүнсний иж бүрэн шим тэжээлийн мэдээлэл.",
+      linksTitle: "Түргэн холбоосууд",
+      resourcesTitle: "Нөөцүүд",
+      contactTitle: "Холбоо",
+      privacy: "Нууцлалын бодлого",
+      terms: "Үйлчилгээний нөхцөл",
+      credits: "Гөмөн мэдүүлэг",
+      copyright: "Монголын хүнсний найрлагын мэдээллийн сан",
+      allRights: "Бүх эрхээ хранаж байна",
+    },
   },
   en: {
     nav: {
@@ -179,6 +192,19 @@ export const translations = {
       enterFoodName: "Please enter a food name.",
       loadingData: "Loading data...",
       failedToLoadNutritionData: "Failed to load nutrition data.",
+    },
+    footer: {
+      aboutTitle: "About",
+      aboutText:
+        "Mongolian Food Composition Database - comprehensive nutritional information for traditional and modern foods.",
+      linksTitle: "Quick Links",
+      resourcesTitle: "Resources",
+      contactTitle: "Contact",
+      privacy: "Privacy Policy",
+      terms: "Terms of Service",
+      credits: "Credits",
+      copyright: "Mongolian Food Composition Database",
+      allRights: "All rights reserved",
     },
   },
 };

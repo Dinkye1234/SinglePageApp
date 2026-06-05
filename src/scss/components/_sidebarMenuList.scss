@@ -10,6 +10,12 @@
   margin-top: 1.25rem;
   word-break: break-word;
   overflow-wrap: break-word;
+  color: var(--text-main);
+  transition: color var(--transition-base);
+
+  &:first-child {
+    margin-top: 0;
+  }
 }
 
 // food group name: Cereals and cereal products
@@ -17,6 +23,24 @@
   word-break: break-word;
   overflow-wrap: break-word;
   white-space: normal;
+  display: flex;
+  align-items: center;
+  padding: 0.5rem 0.75rem;
+  border-radius: 0.375rem;
+  cursor: pointer;
+  transition: all var(--transition-base);
+  color: var(--text-main);
+
+  &:hover,
+  &:focus {
+    background: var(--green-light);
+    color: $primaryColor;
+    font-weight: 600;
+  }
+
+  span {
+    flex: 1;
+  }
 }
 
 // food name: Barley flour, whole grain
@@ -28,21 +52,44 @@
   display: flex;
   align-items: flex-start;
   gap: 0.5rem;
+  padding: 0.4rem 0.5rem;
+  border-radius: 0.25rem;
+  transition: all var(--transition-base);
+  color: var(--text-main);
 
   &:hover {
-    background: var(--hover-bg);
+    background: var(--hover-bg-light);
+    color: $primaryColor;
+  }
+
+  &:focus {
+    outline: 2px solid $primaryColor;
+    outline-offset: 2px;
   }
 
   input[type="checkbox"] {
     display: none;
   }
+
   input[type="checkbox"]:checked + span {
-    color: var(--green);
+    color: $primaryColor;
     font-weight: 600;
+  }
+
+  input[type="checkbox"]:focus + span {
+    color: $primaryColor;
   }
 
   span {
     flex: 1;
+  }
+
+  input[type="checkbox"]:checked {
+    &::before {
+      content: "✓ ";
+      color: $primaryColor;
+      font-weight: 700;
+    }
   }
 }
 
@@ -56,10 +103,36 @@
 
   .app-toggle-sublist {
     font-size: 0.9rem;
+    padding: 0.4rem 0.5rem;
   }
 
   .app-sublist-item {
     font-size: 0.85rem;
     line-height: 1.5rem;
+    padding: 0.35rem 0.4rem;
+  }
+}
+
+// ============ Sub-list animation ============
+
+.app-sublist {
+  margin-top: 0.25rem;
+  max-height: 1000px;
+  opacity: 1;
+  transition: all var(--transition-base);
+  padding-left: 0.5rem;
+  border-left: 2px solid var(--border);
+  margin-left: 0.5rem;
+
+  &.is-hidden {
+    max-height: 0;
+    opacity: 0;
+    overflow: hidden;
+    padding-left: 0.5rem;
+    border-left: 2px solid transparent;
+  }
+
+  li {
+    list-style: none;
   }
 }

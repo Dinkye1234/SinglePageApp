@@ -6,6 +6,12 @@
   font-weight: 800;
   max-width: 760px;
   margin-bottom: 0.5rem;
+  color: var(--text-main);
+  transition: color var(--transition-base);
+
+  &:hover {
+    color: $primaryColor;
+  }
 }
 
 .app-line {
@@ -14,6 +20,11 @@
   border-radius: 999px;
   background: var(--orange);
   margin-bottom: 1.5rem;
+  transition: width var(--transition-base);
+
+  &:hover {
+    width: 120px;
+  }
 }
 
 // tableLayout.js-д .app-subtitle ашигласан.
@@ -25,4 +36,86 @@
   line-height: 1.6;
   max-width: 760px;
   margin-bottom: 2.5rem;
+  transition: color var(--transition-base);
+
+  &:hover {
+    color: var(--text-main);
+  }
+}
+
+// Notification styles
+.notification {
+  border-radius: 0.5rem;
+  border: none;
+  box-shadow: var(--shadow-sm);
+  transition: all var(--transition-base);
+
+  &.is-warning {
+    background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
+    color: #92400e;
+  }
+
+  &.is-danger {
+    background: linear-gradient(135deg, #fee2e2 0%, #fecaca 100%);
+    color: #7f1d1d;
+  }
+
+  &.is-info {
+    background: linear-gradient(135deg, #dbeafe 0%, #bfdbfe 100%);
+    color: #0c2340;
+  }
+
+  &:hover {
+    box-shadow: var(--shadow-md);
+    transform: translateY(-1px);
+  }
+}
+
+// Section title styles
+.section-title {
+  font-size: clamp(1.3rem, 2.5vw, 1.8rem);
+  font-weight: 700;
+  margin-bottom: 1rem;
+  padding-bottom: 0.75rem;
+  border-bottom: 2px solid var(--border);
+  transition: all var(--transition-base);
+
+  &:hover {
+    border-bottom-color: $primaryColor;
+    color: $primaryColor;
+  }
+}
+
+// Responsive adjustments
+@media screen and (max-width: 768px) {
+  .app-title {
+    font-size: clamp(1.3rem, 5vw, 1.8rem);
+    margin-bottom: 0.4rem;
+  }
+
+  .app-line {
+    width: 60px;
+    height: 2px;
+    margin-bottom: 1rem;
+
+    &:hover {
+      width: 100px;
+    }
+  }
+
+  .app-subtitle {
+    font-size: clamp(0.9rem, 2.5vw, 1.1rem);
+    margin-bottom: 1.5rem;
+  }
+
+  .notification {
+    padding: 1rem;
+    font-size: 0.9rem;
+  }
+
+  .section-title {
+    font-size: clamp(1.1rem, 2vw, 1.5rem);
+    margin-bottom: 0.75rem;
+    padding-bottom: 0.5rem;
+  }
 }
