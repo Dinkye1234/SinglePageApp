@@ -1,0 +1,51 @@
+/* Map hover effects for overview page */
+
+#svg-container {
+  svg {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+
+  path {
+    cursor: pointer;
+    transition: all 0.3s ease;
+    fill-opacity: 1;
+    stroke-width: 0.5px;
+
+    &:hover {
+      fill: var(--orange);
+      filter: drop-shadow(0 2px 4px rgba(255, 145, 77, 0.4));
+      stroke-width: 1px;
+    }
+
+    &:active {
+      fill: $secondaryColorDark;
+      filter: drop-shadow(0 2px 6px rgba(255, 145, 77, 0.6));
+    }
+  }
+}
+
+/* Responsive map sizing */
+.map-wrap {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  min-height: 300px;
+
+  @media screen and (min-width: 769px) {
+    min-height: 400px;
+  }
+
+  @media screen and (min-width: 1024px) {
+    min-height: 500px;
+  }
+}
+
+/* Tooltip or province name display on hover */
+svg path[name] {
+  &:hover::after {
+    content: attr(name);
+  }
+}

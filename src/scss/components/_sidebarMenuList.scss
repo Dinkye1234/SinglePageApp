@@ -1,0 +1,65 @@
+// components/searchFoodGroupListSidebar.js
+// search type: Search by food groups:
+.app-menu-label {
+  // color: var(--orange);
+  font-size: clamp(0.85rem, 2vw, 1.05rem);
+  font-weight: 800;
+  text-transform: none;
+  letter-spacing: 0;
+  margin-bottom: 0.4rem;
+  margin-top: 1.25rem;
+  word-break: break-word;
+  overflow-wrap: break-word;
+}
+
+// food group name: Cereals and cereal products
+.app-toggle-sublist {
+  word-break: break-word;
+  overflow-wrap: break-word;
+  white-space: normal;
+}
+
+// food name: Barley flour, whole grain
+.app-sublist-item {
+  line-height: 1.6rem;
+  cursor: pointer;
+  word-break: break-word;
+  overflow-wrap: break-word;
+  display: flex;
+  align-items: flex-start;
+  gap: 0.5rem;
+
+  &:hover {
+    background: var(--hover-bg);
+  }
+
+  input[type="checkbox"] {
+    display: none;
+  }
+  input[type="checkbox"]:checked + span {
+    color: var(--green);
+    font-weight: 600;
+  }
+
+  span {
+    flex: 1;
+  }
+}
+
+// Responsive for mobile
+@media screen and (max-width: 768px) {
+  .app-menu-label {
+    font-size: 0.9rem;
+    margin-top: 1rem;
+    margin-bottom: 0.35rem;
+  }
+
+  .app-toggle-sublist {
+    font-size: 0.9rem;
+  }
+
+  .app-sublist-item {
+    font-size: 0.85rem;
+    line-height: 1.5rem;
+  }
+}

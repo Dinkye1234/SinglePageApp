@@ -1,0 +1,98 @@
+// override bulma button
+:root {
+  --bulma-primary-h: 151deg;
+  --bulma-primary-s: 65%;
+  --bulma-primary-l: 42%;
+}
+
+.button {
+  font-size: clamp(0.85rem, 2vw, 1rem);
+  padding: clamp(0.4rem, 2vw, 0.75rem) clamp(0.75rem, 3vw, 1.5rem);
+  min-height: auto;
+  word-break: break-word;
+  overflow-wrap: break-word;
+  transition: all 0.2s ease;
+
+  &.is-small {
+    font-size: clamp(0.7rem, 1.5vw, 0.875rem);
+    padding: clamp(0.3rem, 1vw, 0.5rem) clamp(0.5rem, 2vw, 1rem);
+  }
+
+  &.is-fullwidth {
+    width: 100%;
+  }
+}
+
+.button.is-primary {
+  background-color: $primaryColor;
+  border-color: $primaryColor;
+  color: white;
+}
+
+.button.is-primary:hover,
+.button.is-primary:focus {
+  background-color: $primaryColorDark;
+  border-color: $primaryColorDark;
+  color: white;
+}
+
+.button.is-secondary {
+  background-color: $secondaryColor;
+  border-color: $secondaryColor;
+  color: white;
+}
+
+.button.is-secondary:hover,
+.button.is-secondary:focus {
+  background-color: $secondaryColorDark;
+  border-color: $secondaryColorDark;
+  color: white;
+}
+
+.button.is-link {
+  font-size: clamp(0.75rem, 2vw, 0.9375rem);
+}
+
+.button.is-danger {
+  font-size: clamp(0.75rem, 2vw, 0.9375rem);
+}
+
+// Responsive button groups
+.buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  align-items: center;
+
+  &.is-centered {
+    justify-content: center;
+  }
+
+  &.is-right {
+    justify-content: flex-end;
+  }
+}
+
+// Responsive for mobile
+@media screen and (max-width: 768px) {
+  .button {
+    font-size: 0.85rem;
+    padding: 0.4rem 0.75rem;
+    min-height: 2rem;
+
+    &.is-small {
+      font-size: 0.75rem;
+      padding: 0.3rem 0.6rem;
+    }
+
+    &.is-fullwidth {
+      width: 100%;
+      margin-bottom: 0.5rem;
+    }
+  }
+
+  .buttons.is-centered {
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+}
