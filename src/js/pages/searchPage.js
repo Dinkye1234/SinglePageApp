@@ -1,4 +1,5 @@
 import { getNutritions } from "../services/nutritionService.js"; // Хоолны шим тэжээлийн өгөгдлийг авна.
+import { getLocalizedValue } from "../i18n/i18n.js";
 import { renderSearchFilters } from "../components/SearchFilters.js"; // Хайлт хийх хэсгийг HTML болгоно.
 import { renderNutritionTables } from "../components/NutritionTables.js"; // Хайлтын үр дүнг хүснэгт хэлбэрээр HTML болгоно.
 import { loadImages } from "../services/imageService.js";
@@ -144,7 +145,7 @@ function bindSearchEvents() {
     const target = event.target;
     if (!(target instanceof HTMLElement)) return;
 
-    const toggle = target.closest(".toggle-sublist");
+    const toggle = target.closest(".app-toggle-sublist");
     if (!toggle) return;
 
     event.preventDefault();
@@ -215,9 +216,12 @@ function getMatchedItems() {
   }
 
   if (keyword) {
-    return nutritionData.filter((item) =>
-      (item.food_name || "").toLowerCase().includes(keyword),
-    );
+    return nutritionData.filter((item) => {
+      const foodName = getLocalizedValue(item.food_name);
+      const normalizedFoodName = (foodName || "").toString().toLowerCase();
+
+      return normalizedFoodName.includes(keyword);
+    });
   }
 
   return nutritionData.slice(0, DEFAULT_ITEM_COUNT);
